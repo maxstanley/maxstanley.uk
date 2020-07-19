@@ -17,35 +17,34 @@ import {
   GitHub as GitHubIcon,
   Home as HomeIcon,
   Visibility as VisibilityIcon,
-} from "@material-ui/icons"
+} from "@material-ui/icons";
 
 import "./SideBar.css";
 
 const useStyles = makeStyles((theme: Theme) => ({
-root: {
-  justifyContent: "center"
-}
+  root: {
+    justifyContent: "center",
+  },
 }));
 
 const mui = createMuiTheme({
-overrides: {
-MuiDrawer: {
-paper: {
-  justifyContent: "center"
-}
-}
-}
+  overrides: {
+    MuiDrawer: {
+      paper: {
+        justifyContent: "center",
+      },
+    },
+  },
 });
 
 interface sidebarItem {
   IconComponent: any;
   altText: string;
-};
+}
 
 interface Props {}
 
 export default function SideBar(props: Props) {
-
   const classes = useStyles();
 
   const sidebarItems: sidebarItem[] = [
@@ -58,31 +57,27 @@ export default function SideBar(props: Props) {
       altText: "My Projects",
     },
     {
-     IconComponent: GitHubIcon,
-     altText: "My GitHub",
+      IconComponent: GitHubIcon,
+      altText: "My GitHub",
     },
     {
       IconComponent: EmailIcon,
       altText: "Contact Me",
-    }
+    },
   ];
 
-  //<ListItemIcon></ListItemIcon>
+  // <ListItemIcon></ListItemIcon>
   return (
-    <Drawer
-      variant="permanent"
-      anchor="left" 
-      className={classes.root}
-    >
+    <Drawer variant="permanent" anchor="left" className={classes.root}>
       <ListItem key="main">
         <span>Max</span>
       </ListItem>
       <List>
-      {sidebarItems.map((item: sidebarItem) => (
-        <ListItem button key={item.altText} className="drawer-item">
-          <item.IconComponent />
-        </ListItem>
-      ))}
+        {sidebarItems.map((item: sidebarItem) => (
+          <ListItem button key={item.altText} className="drawer-item">
+            <item.IconComponent />
+          </ListItem>
+        ))}
       </List>
     </Drawer>
   );
