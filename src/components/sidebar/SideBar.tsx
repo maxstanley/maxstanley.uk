@@ -1,17 +1,5 @@
 import React from "react";
-import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from "@material-ui/core";
-import {
-  createMuiTheme,
-  createStyles,
-  makeStyles,
-  Theme,
-} from "@material-ui/core/styles";
+import { Drawer, List, ListItem } from "@material-ui/core";
 import {
   Email as EmailIcon,
   GitHub as GitHubIcon,
@@ -21,22 +9,6 @@ import {
 
 import "./SideBar.css";
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    justifyContent: "center",
-  },
-}));
-
-const mui = createMuiTheme({
-  overrides: {
-    MuiDrawer: {
-      paper: {
-        justifyContent: "center",
-      },
-    },
-  },
-});
-
 interface sidebarItem {
   IconComponent: any;
   altText: string;
@@ -45,8 +17,6 @@ interface sidebarItem {
 interface Props {}
 
 export default function SideBar(props: Props) {
-  const classes = useStyles();
-
   const sidebarItems: sidebarItem[] = [
     {
       IconComponent: HomeIcon,
@@ -68,17 +38,24 @@ export default function SideBar(props: Props) {
 
   // <ListItemIcon></ListItemIcon>
   return (
-    <Drawer variant="permanent" anchor="left" className={classes.root}>
-      <ListItem key="main">
-        <span>Max</span>
-      </ListItem>
+    <Drawer variant="permanent" anchor="left">
+      <ListItem key="main" />
       <List>
         {sidebarItems.map((item: sidebarItem) => (
-          <ListItem button key={item.altText} className="drawer-item">
+          <ListItem
+            button
+            key={item.altText}
+            className="drawer-item"
+            onClick={() => {
+              window.location.href = "https://github.com/maxstanley";
+            }}
+          >
             <item.IconComponent />
           </ListItem>
         ))}
       </List>
+      {/* This element is at the bottom of the drawer, it keeps the list centered */}
+      <ListItem />
     </Drawer>
   );
 }

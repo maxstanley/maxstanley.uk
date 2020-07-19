@@ -4,7 +4,7 @@ export default createMuiTheme({
   overrides: {
     MuiDrawer: {
       paper: {
-        justifyContent: "center",
+        justifyContent: "space-between",
       },
     },
   },
