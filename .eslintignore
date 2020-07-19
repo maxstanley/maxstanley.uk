@@ -1,0 +1,5 @@
+node_modules/
+docs/
+src/index.tsx
+src/setupTests.ts
+src/serviceWorker.ts
