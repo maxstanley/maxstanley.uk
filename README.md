@@ -7,7 +7,7 @@ The source for maxstanley.uk
 npx create-react-app app --template typescript
 rm src/*.test.tsx public/*.png public/*.ico src/logo.svg src/setupTests.ts
 npm i
-npm i -D webpack webpack-cli typescript css-loader html-webpack-plugin @types/jest @types/node @types/react @types/react-dom ts-loader eslint prettier eslint-config-prettier eslint-plugin-prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin
+npm i -D webpack webpack-cli typescript css-loader html-webpack-plugin @types/jest @types/node @types/react @types/react-dom ts-loader eslint prettier eslint-config-prettier eslint-plugin-prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin html-webpack-plugin
 npx eslint --init
 # Check Syntax, find problems, enforce code style
 # JavaScript modules (import/export)

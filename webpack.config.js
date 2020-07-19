@@ -2,13 +2,12 @@
 
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: "production",
-  // Set debugging source maps to be "inline" for
-  // simplicity and ease of use
-  devtool: "inline-source-map",
-
+  devtool: false,
+  target: "web",
   // The application entry point
   entry: "./src/index.tsx",
 
@@ -44,8 +43,12 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.ProvidePlugin({
       "React": "react"
     }),
+	new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'public', 'index.html')
+    })
   ]
 };
