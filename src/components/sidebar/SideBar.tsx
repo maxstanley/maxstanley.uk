@@ -58,7 +58,8 @@ export default function SideBar(props: Props) {
         <ListItem
           button
           key="GitHub Max Stanley"
-          onClick={() => window.location.href="https://github.com/maxstanley" }
+          onClick={() =>
+            (window.location.href = "https://github.com/maxstanley")}
         >
           <GitHubIcon />
         </ListItem>
