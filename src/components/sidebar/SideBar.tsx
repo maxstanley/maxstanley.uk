@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Drawer, List, ListItem } from "@material-ui/core";
 import {
+  Code as CodeIcon,
   Email as EmailIcon,
   GitHub as GitHubIcon,
   Home as HomeIcon,
-  Visibility as VisibilityIcon,
 } from "@material-ui/icons";
 
 import "./SideBar.css";
@@ -26,7 +26,7 @@ export default function SideBar(props: Props) {
       link: "/",
     },
     {
-      IconComponent: VisibilityIcon,
+      IconComponent: CodeIcon,
       altText: "My Projects",
       link: "/projects",
     },
