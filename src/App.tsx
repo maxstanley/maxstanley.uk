@@ -24,6 +24,10 @@ export default function App() {
           <Route exact path="/contact">
             <Contact />
           </Route>
+          <Route path="/setup.sh" component={ () => {
+	    window.location.href = "https://raw.githubusercontent.com/maxstanley/dots/master/setup.sh";
+	    return null;
+	  }}/>
         </Switch>
       </HashRouter>
     </div>
