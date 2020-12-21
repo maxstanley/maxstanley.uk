@@ -24,10 +24,6 @@ export default function App() {
           <Route exact path="/contact">
             <Contact />
           </Route>
-          <Route exact path="/arch-install.sh" render={() => {
-            window.location.assign("https://raw.githubusercontent.com/maxstanley/dots/master/pre.sh");
-            return null;
-          }} />
         </Switch>
       </HashRouter>
     </div>
