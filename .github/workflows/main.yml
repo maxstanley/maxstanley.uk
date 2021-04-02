@@ -7,18 +7,18 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      MM_VERSION: 0.2.0
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Build masterful-minimalism source
         run: |
-          wget https://github.com/maxstanley/masterful-minimalism/archive/refs/tags/v0.1.0.zip -O masterful-minimalism.zip
-          ls -lah
+          wget https://github.com/maxstanley/masterful-minimalism/archive/refs/tags/v$MM_VERSION.zip -O masterful-minimalism.zip
           unzip masterful-minimalism.zip
-          ls -lah
-          (cd masterful-minimalism-0.1.0/; go build -v)
-          cp masterful-minimalism-0.1.0/masterful-minimalism .
+          (cd masterful-minimalism-$MM_VERSION/; go build -v)
+          cp masterful-minimalism-$MM_VERSION/masterful-minimalism .
 
       - name: Create site using masterful-minimalism
         run: |
