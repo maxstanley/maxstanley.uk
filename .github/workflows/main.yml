@@ -24,6 +24,7 @@ jobs:
         run: |
           ./masterful-minimalism -input=src/
           cp -r src/static/* output/
+          echo "maxstanley.uk" > output/CNAME
 
       - name: Deploy to GitHub Pages
         if: success()
