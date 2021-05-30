@@ -1,0 +1,3 @@
+[submodule "themes/fuck-js"]
+	path = themes/fuck-js
+	url = git@github.com:maxstanley/hugo-theme-fuck-js.git

@@ -1,0 +1,10 @@
+baseUrl                = "https://maxstanley.uk/"
+author                 = "Max Stanley"
+languageCode           = "en-gb"
+title                  = "Max Stanley's Blog"
+relativeURLs           = true
+canonifyUrls           = true
+theme                  = "fuck-js"
+enableEmoji            = true
+DefaultContentLanguage = "en"
+
