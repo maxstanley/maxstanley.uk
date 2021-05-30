@@ -6,5 +6,5 @@ tags = []
 draft = false
 +++
 
-Email: hi@maxstanley.uk
+Email: hi [at] maxstanley.uk
 
