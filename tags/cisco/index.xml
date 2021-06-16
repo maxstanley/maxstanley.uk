@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>cisco on Max Stanley's Blog</title><link>https://maxstanley.uk/tags/cisco/</link><description>Recent content in cisco on Max Stanley's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-gb</language><lastBuildDate>Wed, 16 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://maxstanley.uk/tags/cisco/index.xml" rel="self" type="application/rss+xml"/><item><title>Securing Cisco</title><link>https://maxstanley.uk/page/packet_tracer/securing_cisco/</link><pubDate>Wed, 16 Jun 2021 00:00:00 +0000</pubDate><guid>https://maxstanley.uk/page/packet_tracer/securing_cisco/</guid><description>Configuring a Message of the Day Banner Whilst not a technical security solution, this is a policy security solution. The @&amp;rsquo;s can be replaced with any other delimeter.
+Device&amp;gt;enable Device#configure terminal Device(config)#banner motd @Message@ Securing Access to Priveleged Mode Plain-Text Password Setting the password.
+Device&amp;gt;enable Device#configure terminal Device(config)#enable password PASSWORD Viewing the password.
+Device&amp;gt;enable Device#show running-config | include enable password enable password PASSWORD Encrypting Plain-Text Passwords Setting the password.
+Device&amp;gt;enable Device#configure terminal Device(config)#enable password PASSWORD Device(config)#service password-encryption Viewing the password.</description></item><item><title>Small Static Routing</title><link>https://maxstanley.uk/page/packet_tracer/small_static_routing/</link><pubDate>Wed, 16 Jun 2021 00:00:00 +0000</pubDate><guid>https://maxstanley.uk/page/packet_tracer/small_static_routing/</guid><description>Start by placing 4 2911 Routers in a square configuration with each connected to 2 other routers. Attach a 2960 Switch to each of the routers. Attach a single PC to each of the switches.
+Network IP Network Router IP PC IP 0 192.168.0.0/24 192.168.0.1 192.168.0.100 1 192.168.1.0/24 192.168.1.1 192.168.1.100 2 192.168.2.0/24 192.168.2.1 192.168.2.100 3 192.168.3.0/24 192.168.3.1 192.</description></item><item><title>2 Networks Connected via a Router</title><link>https://maxstanley.uk/page/packet_tracer/2_networks_connected_via_router/</link><pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate><guid>https://maxstanley.uk/page/packet_tracer/2_networks_connected_via_router/</guid><description>Laying out the network Place 4 PCs, 2 2960 (Switch) &amp;amp; 1 4331 (Router), attach the first 2 to 1 switch, and the 2nd 2 to the 2nd switch.
+Then we must configure the 4 PCs with IP Addresses to allow them to communicate, with the other computer in their local network.
+PC0: 192.168.0.2 PC1: 192.168.0.3 PC2: 192.168.1.2 PC3: 192.168.1.3
+From PC1, Desktop &amp;gt; Command Prompt
+ping 192.168.0.2 From PC3, Desktop &amp;gt; Command Prompt</description></item><item><title>Combining 2 Switches Into 1 With VLANs</title><link>https://maxstanley.uk/page/packet_tracer/combining_2_switches_into_1_with_vlans/</link><pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate><guid>https://maxstanley.uk/page/packet_tracer/combining_2_switches_into_1_with_vlans/</guid><description>Laying out the network Place 4 PCs, 1 2960 (Switch) &amp;amp; 1 4331 (Router), attach all 4 PCs to the swtich.
+Then we must configure the 4 PCs with IP Addresses to allow them to communicate, with the other computer in their local network.
+PC0: 192.168.0.2
+PC1: 192.168.0.3
+PC2: 192.168.1.2
+PC3: 192.168.1.3
+From PC1, Desktop &amp;gt; Command Prompt
+ping 192.168.0.2 From PC3, Desktop &amp;gt; Command Prompt
+ping 192.168.1.2 We should also configure the default gateways for each of the PCs.</description></item><item><title>Connecting 2 PCs via a switch</title><link>https://maxstanley.uk/page/packet_tracer/2_pcs_connected_via_switch/</link><pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate><guid>https://maxstanley.uk/page/packet_tracer/2_pcs_connected_via_switch/</guid><description>Placing the two PCs into the network. And Network Devices &amp;gt; Switch &amp;gt; 2960, connect the PCs to the first 2 switch ports, using either Cross-Over or Direct connect cables.
+Then we must configure the 2 PCs with IP Addresses to allow them to communicate.
+PC0: 192.168.0.2 PC1: 192.168.0.3
+From PC1, Desktop &amp;gt; Command Prompt
+ping 192.168.0.2 We can now see the two PCs are able to communicate with each other, whilst connected to a switch.</description></item><item><title>Direclty Connecting 2 PCs</title><link>https://maxstanley.uk/page/packet_tracer/2_pcs_direct_connect/</link><pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate><guid>https://maxstanley.uk/page/packet_tracer/2_pcs_direct_connect/</guid><description>Placing the two PCs into the network. Select Connections &amp;gt; Cross-Over Cable. PCs can&amp;rsquo;t be connected using a direct connection cable.
+Then we must configure the 2 PCs with IP Addresses to allow them to communicate.
+PC0: 192.168.0.2 PC1: 192.168.0.3
+Desktop &amp;gt; IP Configuration &amp;gt; Static
+IPv4 Address: From Above Subnet Mask: 255.255.255.0
+From PC1, Desktop &amp;gt; Command Prompt
+ping 192.168.0.2 We can now see the two PCs are able to communicate with each other.</description></item><item><title>Multiple Switches Multiple VLAN Core Switches</title><link>https://maxstanley.uk/page/packet_tracer/multiple_switches_multiple_vlan_core_switch/</link><pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate><guid>https://maxstanley.uk/page/packet_tracer/multiple_switches_multiple_vlan_core_switch/</guid><description>Laying out the network Place 8 PCs, 2 2960 (Switch) &amp;amp; 1 4331 (Router), attach 4 PCs to each of the swtiches.
+Then we must configure the 4 PCs with IP Addresses to allow them to communicate, with the other computer in their local network.
+PC0: 192.168.0.2
+PC1: 192.168.0.3
+PC2: 192.168.1.2
+PC3: 192.168.1.3
+PC4: 192.168.2.2
+PC5: 192.168.3.2
+PC6: 192.168.4.2
+PC7: 192.168.4.3
+We should also configure the default gateways for each of the PCs.</description></item><item><title>Resetting a Cisco IOS Router</title><link>https://maxstanley.uk/page/packet_tracer/reset_router/</link><pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate><guid>https://maxstanley.uk/page/packet_tracer/reset_router/</guid><description>Router&amp;gt;enable Router#write erase &amp;lt;Enter&amp;gt; Router#reload &amp;lt;Enter&amp;gt; ... Would you like to enter the initial configuration dialog? [yes/no]: no&amp;lt;Enter&amp;gt; Router&amp;gt;</description></item><item><title>VOIP Example</title><link>https://maxstanley.uk/page/packet_tracer/voip_example/</link><pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate><guid>https://maxstanley.uk/page/packet_tracer/voip_example/</guid><description>Layout 3 IP Phones connected to a 2960 Switch, with a 2811 Router connected to the switch. Each IP Phone has a PC on its PC Port.
+Configuring the Switch Creating VLANs Switch&amp;gt;enable Switch#configure terminal Switch(config)#vlan 20 Switch(config-vlan)#name PC Switch(config-vlan)#vlan 30 Switch(config-vlan)#name VOICE Configuring Ports Switch&amp;gt;enable Switch#configure terminal Switch(config)#interface fa0/24 Switch(config-if)#switchport mode trunk Switch(config-if)#interface range fa0/1-3 Switch(config-if-range)#switchport mode access Switch(config-if-range)#switchport access vlan 20 Switch(config-if-range)#switchport voice vlan 30 Switch(config-if-range)#interface range fa0/4-23 Switch(config-if-range)#switchport mode access Switch(config-if-range)#shutdown Switch(config-if-range)#interface range gig0/1-2 Switch(config-if-range)#switchport mode access Switch(config-if-range)#shutdown Save Configuration Switch&amp;gt;enable Switch#copy running-config startup-config Configuring the Router Configuring VLANs Router&amp;gt;enable Router#configure terminal Router(config)#interface fa0/0.</description></item></channel></rss>

@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>2 Networks Connected via a Router - Max Stanley's Blog</title><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content><meta name=author content><meta name=keywords content><link rel=canonical href=https://maxstanley.uk/page/packet_tracer/2_networks_connected_via_router/><link rel=stylesheet type=text/css href=https://maxstanley.uk//css/fuckjs.css><link rel=stylesheet type=text/css href=https://maxstanley.uk//css/github-markdown.css></head><body class=markdown-body><header><nav><h1><a href=https://maxstanley.uk/>Max Stanley's Blog</a></h1><ul><li><a href=https://maxstanley.uk/tags/>Tags</a></li><li><a href=https://maxstanley.uk/about/>About</a></li><li><a href=https://maxstanley.uk/contact/>Contact</a></li></ul></nav></header><section><h1>2 Networks Connected via a Router</h1><article><h2 id=laying-out-the-network>Laying out the network</h2><p>Place 4 PCs, 2 2960 (Switch) & 1 4331 (Router), attach the first 2 to 1 switch, and the 2nd 2 to the 2nd switch.</p><p>Then we must configure the 4 PCs with IP Addresses to allow them to communicate, with the other computer in their local network.</p><p>PC0: 192.168.0.2
+PC1: 192.168.0.3
+PC2: 192.168.1.2
+PC3: 192.168.1.3</p><p>From PC1, Desktop > Command Prompt</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ping 192.168.0.2
+</code></pre></div><p>From PC3, Desktop > Command Prompt</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ping 192.168.1.2
+</code></pre></div><p>We can now see the four PCs are able to communicate within their networks, whilst connected to a switch.</p><h2 id=connecting-the-two-networks-with-a-router>Connecting the two networks with a router</h2><p>Connect Gig0/0/0 from the Router to Switch0 Gig0/1, and Gig0/0/1 to Switch1 Gig0/1.</p><h3 id=configuring-the-router>Configuring the Router</h3><pre><code class=language-ios data-lang=ios>Would you like to enter the initial configuration dialog? [yes/no]: no
+
+Press RETURN to get started!
+
+Router&gt;
+</code></pre><p>In order to allow the two networks to communicate we must configure the Router to have an ip address on each of the networks.</p><p>First, we can check to see how the routers interfaces are currently configured.</p><pre><code class=language-ios data-lang=ios>Router&gt;enable
+Router#show ip interface brief
+Interface             IP-Address  OK?  Method  Status                 Protocol
+GigabitEthernet0/0/0  unassigned  YES  unset   administratively down  down
+GigabitEthernet0/0/1  unassigned  YES  unset   administratively down  down
+GigabitEthernet0/0/2  unassigned  YES  unset   administratively down  down
+Vlan1                 unassigned  YES  unset   administratively down  down
+</code></pre><p>As you can see from the output of the above command, no IP Addresses have been set on any interace, and the Status of the interfaces are all &ldquo;administratively down&rdquo;.</p><p>The following commands are used to assign IP Addresses to the interfaces.</p><pre><code class=language-ios data-lang=ios>Router#configure terminal
+Enter configuration commands, one per line. End with CNTL/Z.
+Router(config)#interface gigabitEthernet 0/0/0
+Router(config-if)#ip address 192.168.0.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#interface gigabitEthernet 0/0/1
+Router(config-if)#ip address 192.168.1.1 255.255.255.0
+Router(config-if)#no shutdown
+</code></pre><p>We can check that the interfaces have been correctly configured by re-running the same command as before.</p><pre><code class=language-ios data-lang=ios>Router(config-if)#end
+Router# show ip interface brief
+Interface             IP-Address   OK?  Method  Status                 Protocol
+GigabitEthernet0/0/0  192.168.0.1  YES  manual  up                     down
+GigabitEthernet0/0/1  192.168.1.1  YES  manual  up                     down
+GigabitEthernet0/0/2  unassigned   YES  unset   administratively down  down
+Vlan1                 unassigned   YES  unset   administratively down  down
+</code></pre><h3 id=configuring-the-pcs>Configuring the PCs</h3><p>Now that we have given the Routers interfaces IP Addresses, we must now configure the PCs to use this as their default gateway.</p><p>PC0-1: 192.168.0.1
+PC2-3: 192.168.1.1</p><p>Desktop > IP Configuration > Default Gateway</p></article></section><footer><small>Copyright &#169; 2021<br>Powered by <a href=http://gohugo.io/ target=_blank>Hugo</a> & <a href=https://github.com/maxstanley/hugo-theme-fuck-js target=_blank>fuck-js</a></small></footer></body></html>

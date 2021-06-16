@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Small Static Routing - Max Stanley's Blog</title><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content><meta name=author content><meta name=keywords content><link rel=canonical href=https://maxstanley.uk/page/packet_tracer/small_static_routing/><link rel=stylesheet type=text/css href=https://maxstanley.uk//css/fuckjs.css><link rel=stylesheet type=text/css href=https://maxstanley.uk//css/github-markdown.css></head><body class=markdown-body><header><nav><h1><a href=https://maxstanley.uk/>Max Stanley's Blog</a></h1><ul><li><a href=https://maxstanley.uk/tags/>Tags</a></li><li><a href=https://maxstanley.uk/about/>About</a></li><li><a href=https://maxstanley.uk/contact/>Contact</a></li></ul></nav></header><section><h1>Small Static Routing</h1><article><p>Start by placing 4 2911 Routers in a square configuration with each connected to 2 other routers.
+Attach a 2960 Switch to each of the routers.
+Attach a single PC to each of the switches.</p><table><thead><tr><th>Network</th><th>IP Network</th><th>Router IP</th><th>PC IP</th></tr></thead><tbody><tr><td>0</td><td>192.168.0.0/24</td><td>192.168.0.1</td><td>192.168.0.100</td></tr><tr><td>1</td><td>192.168.1.0/24</td><td>192.168.1.1</td><td>192.168.1.100</td></tr><tr><td>2</td><td>192.168.2.0/24</td><td>192.168.2.1</td><td>192.168.2.100</td></tr><tr><td>3</td><td>192.168.3.0/24</td><td>192.168.3.1</td><td>192.168.3.100</td></tr></tbody></table><h2 id=configuring-the-routers>Configuring the Routers</h2><h3 id=internal-network>Internal Network</h3><p>Repeat the steps for each of the 4 networks, replacing the X with the network number.</p><pre><code class=language-ios data-lang=ios>Router&gt;enable
+Router#configure terminal
+Router(config)#interface gigabitEthernet 0/2
+Router(config-if)#ip address 192.168.X.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#ip dhcp excluded-address 192.168.X.1 192.168.X.99
+Router(config)#ip dhcp pool NETWORK_X 
+Router(dhcp-config)#network 192.168.X.0 255.255.255.0
+Router(dhcp-config)#default-router 192.168.X.1
+</code></pre><h3 id=routing-configuration>Routing Configuration</h3><table><thead><tr><th>Link X -> Y</th><th>X IP Address</th><th>Y IP Address</th></tr></thead><tbody><tr><td>Router 0 -> Router 1</td><td>10.0.0.1</td><td>10.0.0.2</td></tr><tr><td>Router 1 -> Router 2</td><td>10.0.0.5</td><td>10.0.0.6</td></tr><tr><td>Router 2 -> Router 3</td><td>10.0.0.9</td><td>10.0.0.10</td></tr><tr><td>Router 3 -> Router 0</td><td>10.0.0.13</td><td>10.0.0.14</td></tr></tbody></table><p>Repeat these steps for each of the 4 Routers. The interfaces and addresses will need to match that of your topology.</p><pre><code class=language-ios data-lang=ios>Router&gt;enable
+Router#configure terminal
+Router(config)#interface gigabitEthernet 0/0
+Router(config-if)#ip address 10.0.0.X 255.255.255.252
+Router(config-if)#no shutdown
+Router(config-if)#interface gigabitEthernet 0/1
+Router(config-if)#ip address 10.0.0.Y 255.255.255.252
+Router(config-if)#no shutdown
+</code></pre><p>Here X and Y are the immediate neighbours of the router beinng configured.
+With Z being the router that is not directly attacker to the router being configured.
+The last ip route has a higher &ldquo;administrative distance&rdquo; than the other 3 routes, this route will act as a fail over should that link fail.</p><pre><code class=language-ios data-lang=ios>Router&gt;enable
+Router#configure terminal
+Router(config)#ip route 192.168.X.0 255.255.255.0 10.0.0.X 50
+Router(config)#ip route 192.168.Y.0 255.255.255.0 10.0.0.Y 50
+Router(config)#ip route 192.168.Z.0 255.255.255.0 10.0.0.X 50
+Router(config)#ip route 192.168.Z.0 255.255.255.0 10.0.0.Y 60
+</code></pre><h2 id=configuring-the-pcs>Configuring the PCs</h2><p>Go around each of the PCs and enable DHCP. Desktop > IP Configuration > DHCP</p><p>Each PC should now be able to ping one another.</p></article></section><footer><small>Copyright &#169; 2021<br>Powered by <a href=http://gohugo.io/ target=_blank>Hugo</a> & <a href=https://github.com/maxstanley/hugo-theme-fuck-js target=_blank>fuck-js</a></small></footer></body></html>

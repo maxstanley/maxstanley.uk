@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Securing Cisco - Max Stanley's Blog</title><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content><meta name=author content><meta name=keywords content><link rel=canonical href=https://maxstanley.uk/page/packet_tracer/securing_cisco/><link rel=stylesheet type=text/css href=https://maxstanley.uk//css/fuckjs.css><link rel=stylesheet type=text/css href=https://maxstanley.uk//css/github-markdown.css></head><body class=markdown-body><header><nav><h1><a href=https://maxstanley.uk/>Max Stanley's Blog</a></h1><ul><li><a href=https://maxstanley.uk/tags/>Tags</a></li><li><a href=https://maxstanley.uk/about/>About</a></li><li><a href=https://maxstanley.uk/contact/>Contact</a></li></ul></nav></header><section><h1>Securing Cisco</h1><article><h2 id=configuring-a-message-of-the-day-banner>Configuring a Message of the Day Banner</h2><p>Whilst not a technical security solution, this is a policy security solution.
+The @&rsquo;s can be replaced with any other delimeter.</p><pre><code class=language-ios data-lang=ios>Device&gt;enable
+Device#configure terminal
+Device(config)#banner motd @Message@
+</code></pre><h2 id=securing-access-to-priveleged-mode>Securing Access to Priveleged Mode</h2><h3 id=plain-text-password>Plain-Text Password</h3><p>Setting the password.</p><pre><code class=language-ios data-lang=ios>Device&gt;enable
+Device#configure terminal
+Device(config)#enable password PASSWORD
+</code></pre><p>Viewing the password.</p><pre><code class=language-ios data-lang=ios>Device&gt;enable
+Device#show running-config | include enable password
+enable password PASSWORD
+</code></pre><h3 id=encrypting-plain-text-passwords>Encrypting Plain-Text Passwords</h3><p>Setting the password.</p><pre><code class=language-ios data-lang=ios>Device&gt;enable
+Device#configure terminal
+Device(config)#enable password PASSWORD
+Device(config)#service password-encryption
+</code></pre><p>Viewing the password.</p><pre><code class=language-ios data-lang=ios>Device&gt;enable
+Device#show running-config | include enable password
+enable password 7 08116D7D3A2E2A2536
+</code></pre><h3 id=encrypted-password>Encrypted Password</h3><p>Setting the password.</p><pre><code class=language-ios data-lang=ios>Device&gt;enable
+Device#configure terminal
+Device(config)#enable secret PASSWORD
+</code></pre><p>Viewing the password.</p><pre><code class=language-ios data-lang=ios>Device&gt;enable
+Device#show running-config | include enable secret
+enable secret 5 $1$mERr$cP1uxB/ASHbnPQTLzT8H10
+</code></pre><h2 id=securing-access-to-lines>Securing Access to Lines</h2><h3 id=securing-console>Securing Console</h3><pre><code class=language-ios data-lang=ios>Device&gt;enable
+Device#configure terminal
+Device(config)#line console 0
+Device(config-line)#password PASSWORD
+Device(config-line)#login
+</code></pre></article></section><footer><small>Copyright &#169; 2021<br>Powered by <a href=http://gohugo.io/ target=_blank>Hugo</a> & <a href=https://github.com/maxstanley/hugo-theme-fuck-js target=_blank>fuck-js</a></small></footer></body></html>

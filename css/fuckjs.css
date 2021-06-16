@@ -1,0 +1,78 @@
+html, body {
+	height: 100%;
+	color: #000;
+	background-color: #FFF;
+	font-family: "Ubuntu", "PT Serif", Georgia, "Times New Roman", serif;
+	font-size: 1.15rem;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	position: relative;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+header {
+	padding: 0 3rem;
+}
+
+header > nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header > nav > ul {
+	list-style-type: none;
+}
+
+header > nav a { 
+	color: #000 !important;
+}
+
+header li {
+	display: inline-block;	
+	margin-left: 1em;
+}
+
+header a {
+	color: #666;
+}
+
+body > section {
+	padding: 0 3rem;
+	flex: 1;
+}
+
+a {
+	text-decoration: none;
+}
+
+article {
+	line-height: 1.5;
+}
+
+section .post-summary {
+	border-bottom: thin solid #000;
+}
+
+section .post-summary:last-child {
+	border-bottom: none;
+}
+
+footer {
+	padding: 1rem 0 1rem 0;
+	text-align: center;
+	background-color: #BBB;
+	margin-top: 3rem;
+}
+
+.date-user {
+	font-size: 1rem;
+	font-weight: 300;
+	color: #7A7A7A;
+	font-style: italic;
+}
