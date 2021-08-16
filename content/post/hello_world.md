@@ -2,7 +2,7 @@
 title = "Hello World!"
 description = ""
 date = 2021-05-30
-tags = []
+tags = [ "blog" ]
 draft = false
 +++
 
